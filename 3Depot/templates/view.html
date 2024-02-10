@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My 3Depot - Upload
+{% endblock %}
+
+{% block main %}
+</head>
+    <body>
+        <div>
+            <model-viewer  class="center-container" bounds="tight" src="{{ path }}" ar ar-modes="scene-viewer webxr quick-look"
+            camera-controls poster="poster.webp" shadow-intensity="10" exposure="0.3"
+            camera-orbit="-422.2deg 90deg auto" environment-image="neutral" auto-rotate
+            rotation-per-second="30deg">
+            <!-- Navigation buttons or other content can be placed here -->
+            </model-viewer>
+        </div>
+        <div class="image-details">
+            <h4>{{ name }}</h4>
+            <p>Description: {{ description }}</p>
+            <p>Owner: {{ owner }}</p>
+            <p>File Size: {{ size }} MB</p>
+        </div>
+    </body>
+</html>
+
+{% endblock %}

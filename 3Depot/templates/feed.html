@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Feed
+{% endblock %}
+
+{% block main %}
+
+<div class="gallery">
+    {% for image in image_data %}
+        <div class="image-container" id="model-container-{{ loop.index }}">
+            <div class="model-viewer" id="viewer-{{ loop.index }}">
+                <model-viewer class="mod" bounds="tight" src="{{ image.path }}" ar ar-modes="scene-viewer webxr quick-look"
+                    camera-controls poster="poster.webp" shadow-intensity="10" exposure="0.3"
+                    camera-orbit="-422.2deg 90deg auto" environment-image="neutral" auto-rotate
+                    rotation-per-second="30deg">
+                    <!-- Navigation buttons or other content can be placed here -->
+                </model-viewer>
+            </div>
+            <div class="image-details">
+                <h4>
+                    <a href="{{ url_for('view', image_id=image.id) }}">{{ image.name }}</a>
+                </h4>
+                <p>Description: {{ image.description }}</p>
+                <p>Owner: {{ image.owner }}</p>
+                <p>File Size: {{ image.file_size }} MB</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+</body>
+
+{% endblock %}
